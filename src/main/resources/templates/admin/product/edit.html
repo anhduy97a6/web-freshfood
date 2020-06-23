@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/admin/assets/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/admin/font-awesome/4.5.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/admin/assets/css/ace.min.css}" class="ace-main-stylesheet" id="main-ace-style">
+
+
+    <script th:src="@{/admin/assets/js/ace-extra.min.js}"> </script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type='text/javascript' th:src="@{/admin/js/jquery-2.2.3.min.js} "></script>
+    <script th:src="@{/admin/assets/js/jquery.2.1.1.min.js}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+</head>
+<body>
+    <div th:replace="fragments/header_admin :: header_admin_info"></div>
+    <div th:replace="fragments/menu_admin :: menu_admin_info"></div>
+
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">Trang chủ</a>
+                    </li>
+                    <li class="active">Chỉnh sửa sản phẩm</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <form id="formSubmit" th:action="@{/admin/save-category}" th:object="${category}" method="Post">
+
+                            <div class="form-group">
+
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Id</label>
+                                <div class="col-sm-9">
+                                    <input type="text" th:field="*{id}" readonly="readonly"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Tên danh mục</label>
+                                <div class="col-sm-9">
+                                    <input type="text" th:field="*{name}"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right">Mô tả ngắn</label>
+                                <div class="col-sm-9">
+                                    <input type="text" th:field="*{shortDesc}"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+
+
+
+                            <button class="btn btn-white btn-warning btn-bold" type="submit">Sửa danh mục</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top"> <i
+            class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready
+                    to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button"
+                            data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer class="footer" th:replace="fragments/footer_admin :: footer_admin_info"></footer>
+
+    <script th:src="@{/admin/assets/js/bootstrap.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery-ui.custom.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.ui.touch-punch.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.easypiechart.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.sparkline.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.flot.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.flot.pie.min.js}"></script>
+    <script th:src="@{/admin/assets/js/jquery.flot.resize.min.js}"></script>
+    <script th:src="@{/admin/assets/js/ace-elements.min.js}"></script>
+    <script th:src="@{/admin/assets/js/ace.min.js}"></script>
+    <script th:src="@{/admin/assets/js/bootstrap.min.js}"></script>
+
+    <!-- page specific plugin scripts -->
+    <script th:src="@{/admin/assets/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/admin/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/admin/timkiem.js}"></script>
+</body>
+</html>
