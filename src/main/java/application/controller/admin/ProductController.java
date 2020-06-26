@@ -35,7 +35,7 @@ public class ProductController {
     public String listProduct(Model model,
                               @Param("keyword") String keyword,
                               @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-                              @RequestParam(name = "size", required = false, defaultValue = "8") Integer size) {
+                              @RequestParam(name = "size", required = false, defaultValue = "12") Integer size) {
 
         Pageable pageable = new PageRequest(page, size);
         Page<Product> productList = productService.getByAll(keyword, pageable);
@@ -72,7 +72,8 @@ public class ProductController {
     @RequestMapping("/save-product")
     public String save(@ModelAttribute("product") Product product,
                        RedirectAttributes ra,
-                       @RequestParam("fileImages") MultipartFile multipartFile) throws IOException {
+                       @RequestParam(name = "file") MultipartFile multipartFile)  {
+
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         product.setMainImage(fileName);
 
