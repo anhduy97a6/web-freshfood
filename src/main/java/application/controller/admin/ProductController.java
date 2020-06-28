@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -74,11 +75,30 @@ public class ProductController {
                        RedirectAttributes ra,
                        @RequestParam(name = "file") MultipartFile multipartFile)  {
 
-        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        product.setMainImage(fileName);
+        try {
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            product.setMainImage(fileName);
+            File file = new File(this.getFolderUpload(), fileName);
+            multipartFile.transferTo(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         productService.save(product);
         return "redirect:/admin/product";
     }
+
+    public File getFolderUpload() {
+        File file1 = new File("");
+        // lấy đường dẫn của project
+        String path = file1.getAbsolutePath();
+        File folderUpload = new File( path + "\\src\\main\\resources\\uploaded");
+        if (!folderUpload.exists()) {
+            folderUpload.mkdirs();
+        }
+        return folderUpload;
+    }
+
 
 }

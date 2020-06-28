@@ -74,7 +74,7 @@ public class Product {
     }
 
     public String getMainImage() {
-        return mainImage;
+        return "/uploaded/" + mainImage;
     }
 
     public void setMainImage(String mainImage) {
